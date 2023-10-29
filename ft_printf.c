@@ -6,11 +6,11 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 16:49:40 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:24:19 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printffunc.h"
+#include "libftprintf.h"
 
 int	ft_flag_catch(va_list arr, const char *input)
 {
@@ -26,10 +26,13 @@ int	ft_flag_catch(va_list arr, const char *input)
 		return (ft_is_int(va_arg(arr, int)));
 	else if (*input == 'u')
 		return (ft_is_unsigned(va_arg(arr, unsigned int)));
-	else if (*input == '%')
+	else if (*input == '%') //??
 		return (ft_is_char(va_arg(arr, int)));
 	else
-		return ;
+	{
+		write(1, &(*input), 1);
+		return (1);
+	}
 }
 
 int	ft_printf(const char *input, ...)
@@ -44,11 +47,16 @@ int	ft_printf(const char *input, ...)
 	while (input[i] != '\0')
 	{
 		if (input[i++] == '%')
-			relen = ft_flag_catch(arr, input[i]);
+			relen = ft_flag_catch(arr, &(input[i]));
 		else
 			relen = write(1, &(input[i]), 1);
 		i++;
 	}
 	va_end(arr);
 	return (relen);
+}
+
+int main()
+{
+	ft_printf("hey");
 }
