@@ -3,7 +3,6 @@ CC = CC
 FLAGS = -Wall -Wextra -Werror
 
 SRC = ft_printf.c \
-		
 
 OBJ = (SRC:.c=.o)
 
