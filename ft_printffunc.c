@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 17:41:14 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:40:49 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int	ft_is_address(unsigned long ul)
 // 0x ekle
 	if (ul >= 16)
 	{
-		ft_is_address(ul / 10);
+		ft_is_address(ul / 16);
+		if (ul / 16 < 16)
+			write (1, "0x", 2);
 		write(1, &"0123456789abcdef"[ul % 16], 1);
 		return (++esc);
 	}
