@@ -6,13 +6,13 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 17:24:19 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:44:16 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_flag_catch(va_list arr, const char *input)
+static int	ft_flag_catch(va_list arr, const char *input)
 {
     if (*input == 'c')
 		return (ft_is_char(va_arg(arr, int))); //va_ veri tipi nasıl tanımlı veri tiğine dönüşüyor?
@@ -30,7 +30,7 @@ int	ft_flag_catch(va_list arr, const char *input)
 		return (ft_is_char(va_arg(arr, int)));
 	else
 	{
-		write(1, &(*input), 1);
+		write(1, input, 1);
 		return (1);
 	}
 }
@@ -58,5 +58,5 @@ int	ft_printf(const char *input, ...)
 
 int main()
 {
-	ft_printf("hey");
+	ft_printf("%x", 1);
 }

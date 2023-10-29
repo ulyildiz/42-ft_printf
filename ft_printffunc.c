@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 17:21:12 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:41:14 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_is_hex(unsigned int hex, int to)
 
 	esc = 0;
 	if (hex >= 16)
-			ft_is_hex(hex / 16, to);
+		ft_is_hex(hex / 16, to);
 	if (to == 'x')
 		write (1, &"0123456789abcdef"[hex % 16], 1);
 	else if (to == 'X')	
@@ -62,7 +62,7 @@ int	ft_is_hex(unsigned int hex, int to)
 int	ft_is_address(unsigned long ul)
 {
 	int	esc;
-
+// 0x ekle
 	if (ul >= 16)
 	{
 		ft_is_address(ul / 10);
