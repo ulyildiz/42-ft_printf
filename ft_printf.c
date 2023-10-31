@@ -6,11 +6,12 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 17:44:16 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:07:16 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 static int	ft_flag_catch(va_list arr, const char *input)
 {
@@ -26,13 +27,8 @@ static int	ft_flag_catch(va_list arr, const char *input)
 		return (ft_is_int(va_arg(arr, int)));
 	else if (*input == 'u')
 		return (ft_is_unsigned(va_arg(arr, unsigned int)));
-	else if (*input == '%') //??
-		return (ft_is_char(va_arg(arr, int)));
 	else
-	{
-		write(1, input, 1);
-		return (1);
-	}
+		return (write(1, input, 1));
 }
 
 int	ft_printf(const char *input, ...)
@@ -46,10 +42,10 @@ int	ft_printf(const char *input, ...)
 	i = 0;
 	while (input[i] != '\0')
 	{
-		if (input[i++] == '%')
-			relen = ft_flag_catch(arr, &(input[i]));
+		if (input[i] == '%')
+			relen += ft_flag_catch(arr, &(input[++i]));
 		else
-			relen = write(1, &(input[i]), 1);
+			relen += write(1, (input + i), 1);
 		i++;
 	}
 	va_end(arr);
@@ -58,5 +54,8 @@ int	ft_printf(const char *input, ...)
 
 int main()
 {
-	ft_printf("%x", 1);
+	int i = ft_printf("merhaba %lx -", -2147483648);
+	int	f = printf("merhaba %lx -", -2147483648);
+	printf ("\ni = %d, f = %d", i, f);
+	
 }
