@@ -6,12 +6,11 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/31 16:16:37 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:28:24 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static int	ft_is_char(int c)
 {
@@ -28,7 +27,6 @@ static int	ft_flag_catch(va_list arr, const char *input)
 {
 	if (*input == 'c')
 		return (ft_is_char(va_arg(arr, int)));
-	//va_ veri tipi nasıl tanımlı veri tiğine dönüşüyor?
 	else if (*input == 's')
 		return (ft_is_string(va_arg(arr, char *)));
 	else if (*input == 'x' || *input == 'X')
@@ -63,13 +61,3 @@ int	ft_printf(const char *input, ...)
 	va_end(arr);
 	return (relen);
 }
-
-/*
-int main()
-{
-	char *a = "merhaba";
-	int i = ft_printf("%i ", -23534);
-	int	f = printf("%i ", -23534);
-	printf ("\ni = %d, f = %d", i, f);
-}
-*/
