@@ -5,12 +5,12 @@ FLAGS = -Wall -Wextra -Werror
 SRC = ft_printf.c \
 		ft_printffunc.c
 
-OBJ = (SRC:.c=.o)
-
-all: $(NAME)
+OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) *.o
+
+all: $(NAME)
 
 .c.o:
 	cc	$(FLAGS) -c $< -o $@
