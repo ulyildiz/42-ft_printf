@@ -6,12 +6,22 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/31 15:07:16 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:04:16 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
+static int ft_is_char(int c)
+{
+	int	esc;
+	char a;
+
+	a = (char)c;
+	esc = 0;
+	write(1, &a, 1); //???
+	return (++esc);
+}
 
 static int	ft_flag_catch(va_list arr, const char *input)
 {
@@ -50,12 +60,4 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(arr);
 	return (relen);
-}
-
-int main()
-{
-	int i = ft_printf("merhaba %lx -", -2147483648);
-	int	f = printf("merhaba %lx -", -2147483648);
-	printf ("\ni = %d, f = %d", i, f);
-	
 }

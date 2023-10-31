@@ -6,22 +6,11 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/29 18:40:49 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:30:16 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int ft_is_char(int c)
-{
-	int	esc;
-	char a;
-
-	a = (char)c;
-	esc = 0;
-	write(1, &a, 1); //???
-	return (++esc);
-}
 
 int	ft_is_int(int i)
 {
@@ -51,7 +40,7 @@ int	ft_is_hex(unsigned int hex, int to)
 
 	esc = 0;
 	if (hex >= 16)
-		ft_is_hex(hex / 16, to);
+		esc += ft_is_hex(hex / 16, to);
 	if (to == 'x')
 		write (1, &"0123456789abcdef"[hex % 16], 1);
 	else if (to == 'X')	
@@ -62,12 +51,13 @@ int	ft_is_hex(unsigned int hex, int to)
 int	ft_is_address(unsigned long ul)
 {
 	int	esc;
-// 0x ekle
+	
+	esc = 0;
 	if (ul >= 16)
 	{
-		ft_is_address(ul / 16);
 		if (ul / 16 < 16)
-			write (1, "0x", 2);
+			esc += write (1, "0x", 2);
+		esc += ft_is_address(ul / 16);
 		write(1, &"0123456789abcdef"[ul % 16], 1);
 		return (++esc);
 	}
@@ -78,10 +68,11 @@ int	ft_is_address(unsigned long ul)
 int	ft_is_unsigned(unsigned int un)
 {
 	int	esc;
-	
+
+	esc = 0;
 	if (un > 10) // 123 // direkt itoa olsa?
 	{
-		ft_is_unsigned(un / 10);
+		esc += ft_is_unsigned(un / 10);
 		write(1, &"0123456789"[un % 10], 1);
 		return (++esc);
 	}

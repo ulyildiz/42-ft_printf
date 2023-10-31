@@ -6,7 +6,6 @@
 # include <stdlib.h>
 # include "../42libft/libft.h"
 
-int ft_is_char(int c);
 int	ft_printf(const char *input, ...);
 int	ft_is_int(int i);
 int	ft_is_string(char *s);
