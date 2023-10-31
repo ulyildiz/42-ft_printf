@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/31 16:26:11 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:29:18 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_is_string(char *s)
 {
 	int	esc;
 
-	esc = 0; // s boş gelirse ,null durumu?
+	esc = 0;
 	while (s[esc] != '\0')
 		write (1, &(s[esc++]), 1);
 	return (esc);
