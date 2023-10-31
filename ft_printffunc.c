@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/31 15:30:16 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:14:38 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_int(int i)
 	return (esc);
 }
 
-int ft_is_string(char *s)
+int	ft_is_string(char *s)
 {
 	int	esc;
 
@@ -43,7 +43,7 @@ int	ft_is_hex(unsigned int hex, int to)
 		esc += ft_is_hex(hex / 16, to);
 	if (to == 'x')
 		write (1, &"0123456789abcdef"[hex % 16], 1);
-	else if (to == 'X')	
+	else if (to == 'X')
 		write (1, &"0123456789ABCDEF"[hex % 16], 1);
 	return (++esc);
 }
@@ -51,7 +51,7 @@ int	ft_is_hex(unsigned int hex, int to)
 int	ft_is_address(unsigned long ul)
 {
 	int	esc;
-	
+
 	esc = 0;
 	if (ul >= 16)
 	{
@@ -70,7 +70,7 @@ int	ft_is_unsigned(unsigned int un)
 	int	esc;
 
 	esc = 0;
-	if (un > 10) // 123 // direkt itoa olsa?
+	if (un > 10)
 	{
 		esc += ft_is_unsigned(un / 10);
 		write(1, &"0123456789"[un % 10], 1);
