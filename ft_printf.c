@@ -6,13 +6,13 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/11/01 04:33:55 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/01 08:38:13 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_is_char(char c)
+static int	ft_is_char(char c)
 {
 	return (write(1, &c, 1));	
 }
