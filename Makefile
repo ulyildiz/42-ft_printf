@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-
+LIBFT = libft
 FLAGS = -Wall -Wextra -Werror
 
 SRC = ft_printf.c \
@@ -8,6 +8,9 @@ SRC = ft_printf.c \
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
+	@make -C $(LIBFT)
+	@cp libft/libft.a .
+	@mv libft.a $(NAME)
 	ar rc $(NAME) *.o
 
 all: $(NAME)

@@ -6,27 +6,22 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/10/31 16:28:24 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/01 04:33:55 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	ft_is_char(int c)
+int	ft_is_char(char c)
 {
-	int		esc;
-	char	a;
-
-	a = (char)c;
-	esc = 0;
-	write(1, &a, 1);
-	return (++esc);
+	return (write(1, &c, 1));	
 }
 
 static int	ft_flag_catch(va_list arr, const char *input)
 {
 	if (*input == 'c')
 		return (ft_is_char(va_arg(arr, int)));
+	//va_ veri tipi nasıl tanımlı veri tiğine dönüşüyor?
 	else if (*input == 's')
 		return (ft_is_string(va_arg(arr, char *)));
 	else if (*input == 'x' || *input == 'X')
@@ -37,25 +32,32 @@ static int	ft_flag_catch(va_list arr, const char *input)
 		return (ft_is_int(va_arg(arr, int)));
 	else if (*input == 'u')
 		return (ft_is_unsigned(va_arg(arr, unsigned int)));
+	else if (*input == '%')
+		return (write(1, "%%", 1));
 	else
-		return (write(1, input, 1));
+		return (-1);
 }
 
 int	ft_printf(const char *input, ...)
 {
+	int		f;
 	int		i;
 	int		relen;
 	va_list	arr;
 
 	va_start(arr, input);
 	relen = 0;
+	f = 0;
 	i = 0;
 	while (input[i] != '\0')
 	{
 		if (input[i] == '%')
-			relen += ft_flag_catch(arr, &(input[++i]));
+			f = ft_flag_catch(arr, &(input[++i]));
 		else
-			relen += write(1, (input + i), 1);
+			f = write(1, (input + i), 1);
+		if (f == -1)
+			return (-1);
+		relen += f;
 		i++;
 	}
 	va_end(arr);
