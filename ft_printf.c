@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/11/01 08:38:13 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:54:02 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 static int	ft_is_char(char c)
 {
-	return (write(1, &c, 1));	
+	return (write(1, &c, 1));
 }
 
 static int	ft_flag_catch(va_list arr, const char *input)
 {
 	if (*input == 'c')
 		return (ft_is_char(va_arg(arr, int)));
-	//va_ veri tipi nasıl tanımlı veri tiğine dönüşüyor?
 	else if (*input == 's')
 		return (ft_is_string(va_arg(arr, char *)));
 	else if (*input == 'x' || *input == 'X')
@@ -62,4 +61,14 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(arr);
 	return (relen);
+}
+#include <stdio.h>
+int main()
+{
+	char a = '^';
+	/*char *arr;
+	long long int b = 9223372036854775807;
+	arr = malloc(b);*/
+	//ft_printf("merhaba %d - %p - %c - %p -%p - %p", 5, &a, a);
+	ft_printf("\n merhaba %d - %p - %c",5, &a, a);
 }

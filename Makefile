@@ -20,9 +20,11 @@ all: $(NAME)
 
 clean:
 	rm -rf $(OBJ)
+	rm -rf libft/*.o
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf libft/libft.a
 
 re: fclean all
 

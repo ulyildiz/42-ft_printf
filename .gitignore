@@ -60,3 +60,4 @@ dkms.conf
 main.c
 .gitignore
 *.md
+*.out

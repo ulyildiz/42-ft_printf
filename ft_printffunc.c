@@ -6,12 +6,13 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/11/01 08:37:56 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/04 19:16:50 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <stdlib.h>
+#include <unistd.h>
+#include "libft/libft.h"
 
 int	ft_is_int(int i)
 {
@@ -37,7 +38,7 @@ int	ft_is_int(int i)
 int	ft_is_string(char *s)
 {
 	int	esc;
-	int check;
+	int	check;
 
 	check = 0;
 	esc = 0;
@@ -55,14 +56,14 @@ int	ft_is_string(char *s)
 int	ft_is_hex(unsigned int hex, int to)
 {
 	int	esc;
-	int check;
+	int	check;
 
 	check = 0;
 	esc = 0;
 	if (hex >= 16)
 		esc += ft_is_hex(hex / 16, to);
 	if (esc == -1)
-		return (-1);	
+		return (-1);
 	if (to == 'x')
 		check = write (1, &"0123456789abcdef"[hex % 16], 1);
 	else if (to == 'X')
@@ -75,7 +76,7 @@ int	ft_is_hex(unsigned int hex, int to)
 int	ft_is_address(unsigned long ul)
 {
 	int	esc;
-	int check;
+	int	check;
 
 	check = 0;
 	esc = 0;
@@ -103,7 +104,7 @@ int	ft_is_address(unsigned long ul)
 int	ft_is_unsigned(unsigned int un)
 {
 	int	esc;
-	int check;
+	int	check;
 
 	check = 0;
 	esc = 0;
