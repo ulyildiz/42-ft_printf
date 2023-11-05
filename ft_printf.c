@@ -6,7 +6,7 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:01 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/11/04 17:54:02 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/04 19:27:26 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,4 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(arr);
 	return (relen);
-}
-#include <stdio.h>
-int main()
-{
-	char a = '^';
-	/*char *arr;
-	long long int b = 9223372036854775807;
-	arr = malloc(b);*/
-	//ft_printf("merhaba %d - %p - %c - %p -%p - %p", 5, &a, a);
-	ft_printf("\n merhaba %d - %p - %c",5, &a, a);
 }

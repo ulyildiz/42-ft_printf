@@ -6,13 +6,12 @@
 /*   By: ulyildiz <ulyildiz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:39:22 by ulyildiz          #+#    #+#             */
-/*   Updated: 2023/11/04 19:16:50 by ulyildiz         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:56:46 by ulyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 int	ft_is_int(int i)
 {
